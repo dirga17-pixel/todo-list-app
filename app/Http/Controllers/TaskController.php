@@ -11,4 +11,12 @@ class TaskController extends Controller
         \App\Models\Task::create(['name' => $request->name]);
         return redirect()->back();
 }
+public function index() {
+        $tasks = \App\Models\Task::all();
+        return view('index', compact('tasks'));
+    }
+    public function destroy(\App\Models\Task $task) {
+        $task->delete();
+        return redirect()->back();
+    }
 }
